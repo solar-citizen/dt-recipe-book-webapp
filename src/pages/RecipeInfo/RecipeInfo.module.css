@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+.instructions {
+    @apply mb-8 max-h-[25vh] overflow-auto border border-gray-200 rounded-lg p-2;
+
+    &::-webkit-scrollbar-track {
+        @apply bg-gray-100 rounded-lg;
+        -webkit-box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.3);
+    }
+
+    &::-webkit-scrollbar {
+        @apply bg-gray-100 w-3;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        @apply bg-gray-300 rounded-lg hover:bg-gray-400;
+    }
+}
+
