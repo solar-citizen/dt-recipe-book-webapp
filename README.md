@@ -10,7 +10,9 @@ cd dt-recipe-book
 Else:
 
 ```bash
-git clone
+cd dt-recipe-book
+git clone https://github.com/solar-citizen/dt-recipe-book-webapp.git
+cd dt-recipe-book-webapp
 npm i
 ```
 
