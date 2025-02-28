@@ -31,6 +31,13 @@ npm i
 
 P.S. I probably forgot something here...
 
+# Before running
+
+```bash
+# in root folder create .env.development
+# copy contents of .example.env
+```
+
 # Running
 
 ```bash
