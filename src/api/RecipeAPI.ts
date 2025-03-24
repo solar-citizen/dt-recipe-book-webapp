@@ -1,8 +1,9 @@
 import axios from 'axios'
-import { baseURL } from '../lib'
 
-export class RecipeAPI {
-  static async getRecipes(filters?: {
+import { baseURL } from '@/src/lib'
+
+export const RecipeAPI = {
+  async getRecipes(filters?: {
     ingredient?: string;
     country?: string;
     category?: string;
@@ -20,9 +21,9 @@ export class RecipeAPI {
       console.error('Error fetching recipes:', error)
       return []
     }
-  }
+  },
 
-  static async getRecipeById(id: string) {
+  async getRecipeById(id: string) {
     try {
       const response = await axios.get(`${baseURL}/recipes/${id}`)
       if (!response.data.meals) new Error('Recipe not found')
@@ -31,9 +32,9 @@ export class RecipeAPI {
       console.error('Error fetching recipe:', error)
       return null
     }
-  }
+  },
 
-  private static parseRecipeDetails(meal: any) {
+  parseRecipeDetails(meal: any) {
     const ingredients = []
     for (let i = 1; i <= 20; i++) {
       const ingredient = meal[`strIngredient${i}`]
@@ -50,5 +51,5 @@ export class RecipeAPI {
       strCategory: meal.strCategory,
       ingredients,
     }
-  }
+  },
 }

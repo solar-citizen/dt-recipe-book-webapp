@@ -1,4 +1,4 @@
-import RecipeList from './RecipeList'
 import RecipeInfo from './RecipeInfo'
+import RecipeList from './RecipeList'
 
-export { RecipeList, RecipeInfo }
+export { RecipeInfo,RecipeList }

@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
-import { RecipeAPI } from '../../api'
-import { IRecipe } from '../../lib'
+
+import { RecipeAPI } from '@/src/api'
+import { IRecipe } from '@/src/lib'
 
 const RecipeList = () => {
   const [recipes, setRecipes] = useState<IRecipe[]>([])

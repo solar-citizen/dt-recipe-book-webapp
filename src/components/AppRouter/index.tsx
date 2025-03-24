@@ -1,5 +1,6 @@
 import { Navigate, Route, Routes } from 'react-router-dom'
-import { RecipeList, RecipeInfo } from '../../pages'
+
+import { RecipeInfo, RecipeList } from '@/src/pages'
 
 const AppRouter = () => {
   return (

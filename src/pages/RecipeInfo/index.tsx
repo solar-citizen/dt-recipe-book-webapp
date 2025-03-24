@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react'
-import { Link, useParams, useNavigate } from 'react-router-dom'
-import { ISimpleRecipe, IRecipeDetails } from '../../lib'
-import { RecipeAPI } from '../../api'
+import { Link, useNavigate, useParams } from 'react-router-dom'
+
+import { RecipeAPI } from '@/src/api'
+import { IRecipeDetails, ISimpleRecipe } from '@/src/lib'
 
 import styles from './RecipeInfo.module.css'
 
@@ -63,7 +64,7 @@ const RecipeInfo = () => {
             <div className="flex-1">
               <h1 className="text-4xl font-bold mb-4">{recipe.strMeal}</h1>
               <button
-                onClick={() => handleFilterClick('country', recipe.strArea)}
+                onClick={() => { handleFilterClick('country', recipe.strArea); }}
                 className="text-blue-600 hover:text-blue-800 text-lg cursor-pointer"
               >
                 {recipe.strArea} Cuisine
@@ -84,7 +85,7 @@ const RecipeInfo = () => {
               {recipe.ingredients.map(({ ingredient, measure }, index: number) => (
                 <button
                   key={index}
-                  onClick={() => handleFilterClick('ingredient', ingredient)}
+                  onClick={() => { handleFilterClick('ingredient', ingredient); }}
                   className="bg-gray-100 p-3 rounded hover:bg-gray-200 transition-colors text-left"
                 >
                   <span className="font-medium">{ingredient}</span>
