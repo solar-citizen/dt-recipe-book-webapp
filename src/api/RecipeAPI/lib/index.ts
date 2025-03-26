@@ -1,0 +1,1 @@
+export { type IMealAPIResponse, type IMealResponse } from './interfaces'

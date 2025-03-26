@@ -1,1 +1,1 @@
-export { RecipeAPI } from './RecipeAPI.ts'
+export * from './RecipeAPI'

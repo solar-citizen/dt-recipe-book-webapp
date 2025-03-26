@@ -1,1 +1,1 @@
-export { type IRecipe, type ISimpleRecipe, type IRecipeDetails } from './IRecipe.ts'
+export { type IRecipe, type IRecipeDetails,type ISimpleRecipe } from './IRecipe.ts'
