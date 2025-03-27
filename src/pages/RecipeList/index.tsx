@@ -24,7 +24,7 @@ const RecipeList = () => {
 
         setRecipes(data)
       } catch (err) {
-        setError('Failed to fetch recipes')
+        setError(err as string)
       } finally {
         setLoading(false)
       }
@@ -34,15 +34,21 @@ const RecipeList = () => {
   }, [searchParams])
 
   const getPageTitle = () => {
-    if (searchParams.get('ingredient')) {
-      return `Recipes with ${searchParams.get('ingredient')}`
+    const ingredient = searchParams.get('ingredient')
+    if (ingredient !== null) {
+      return `Recipes with ${ingredient}`
     }
-    if (searchParams.get('country')) {
-      return `${searchParams.get('country')} Recipes`
+
+    const country = searchParams.get('country')
+    if (country !== null) {
+      return `${country} Recipes`
     }
-    if (searchParams.get('category')) {
-      return `${searchParams.get('category')} Recipes`
+
+    const category = searchParams.get('category')
+    if (category !== null) {
+      return `${category} Recipes`
     }
+
     return 'All Recipes'
   }
 
