@@ -1,9 +1,5 @@
-import { AppRouter } from './components'
+import { AppRouter } from '@/src/routes'
 
-const App = () => {
-  return (
-    <AppRouter />
-  )
-}
+const App = () => <AppRouter />
 
 export default App

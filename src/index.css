@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 #root {
   @apply px-4 lg:px-[5vw] 2xl:px-[18vw] relative;
@@ -11,4 +11,8 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  scrollbar-gutter: stable;
 }
