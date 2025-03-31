@@ -1,31 +1,13 @@
-import { useCallback, useMemo } from 'react'
-import { useSearchParams } from 'react-router-dom'
-
-import { RecipeAPI } from '@/src/api'
 import { Heading, PageContainer } from '@/src/components/atoms'
 import { LoadingErrorHandler, RecipeCard } from '@/src/components/molecules'
-import { useFetch } from '@/src/lib'
 
-import { getPageTitle, type RecipeFiltersType, RecipeFilterTypes } from './lib'
+import { getPageTitle, useFilteredRecipes } from './lib'
 
 const RecipeList = () => {
-  const [searchParams] = useSearchParams()
-
-  const filters = useMemo<RecipeFiltersType>(
-    () => ({
-      [RecipeFilterTypes.INGREDIENT]: searchParams.get(RecipeFilterTypes.INGREDIENT) || undefined,
-      [RecipeFilterTypes.COUNTRY]: searchParams.get(RecipeFilterTypes.COUNTRY) || undefined,
-      [RecipeFilterTypes.CATEGORY]: searchParams.get(RecipeFilterTypes.CATEGORY) || undefined,
-    }),
-    [searchParams],
-  )
-
-  const fetchRecipes = useCallback(() => RecipeAPI.getRecipes(filters), [filters])
-
-  const { data: recipes, error: recipesErr, isLoading: isPendingRecipes } = useFetch(fetchRecipes, [searchParams])
+  const { recipes, error, isLoading, searchParams } = useFilteredRecipes()
 
   return (
-    <LoadingErrorHandler isLoading={isPendingRecipes} error={recipesErr}>
+    <LoadingErrorHandler isLoading={isLoading} error={error}>
       <PageContainer>
         <Heading level={1} className='mb-8 text-center'>
           {getPageTitle(searchParams)}

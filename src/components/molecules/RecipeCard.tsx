@@ -18,7 +18,12 @@ const RecipeCard = ({ recipe, variant = 'full' }: RecipeCardProps) => {
         to={`/recipes/${recipe.idMeal}`}
         className='flex items-center bg-white p-3 rounded-lg shadow hover:shadow-md transition-shadow'
       >
-        <img src={recipe.strMealThumb} alt={recipe.strMeal} className='w-16 h-16 object-cover rounded mr-4' />
+        <img
+          loading='lazy'
+          src={recipe.strMealThumb}
+          alt={recipe.strMeal}
+          className='w-16 h-16 object-cover rounded mr-4'
+        />
         <span className='font-medium'>{recipe.strMeal}</span>
       </Link>
     )
@@ -30,7 +35,7 @@ const RecipeCard = ({ recipe, variant = 'full' }: RecipeCardProps) => {
       to={`/recipes/${recipe.idMeal}`}
       className='bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow'
     >
-      <img src={recipe.strMealThumb} alt={recipe.strMeal} className='w-full h-48 object-cover' />
+      <img loading='lazy' src={recipe.strMealThumb} alt={recipe.strMeal} className='w-full h-48 object-cover' />
       <div className='p-4'>
         <Heading level={3} className='text-xl font-semibold mb-2'>
           {recipe.strMeal}

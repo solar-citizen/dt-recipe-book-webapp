@@ -1,42 +1,23 @@
-import { useCallback } from 'react'
 import { useParams } from 'react-router-dom'
 
-import { RecipeAPI } from '@/src/api'
 import { Heading, PageContainer } from '@/src/components/atoms'
 import { FilterLink, LoadingErrorHandler, RecipeCard } from '@/src/components/molecules'
-import { ISimpleRecipe, useFetch } from '@/src/lib'
+
+import { useRecipeWithSimilarRecipes } from './lib'
 
 const RecipeInfo = () => {
   const { id } = useParams<{ id: string }>()
 
-  const fetchRecipe = useCallback(async () => {
-    if (id) return await RecipeAPI.getRecipeById(id)
-  }, [id])
-
-  const { data: recipe, error: recipeError, isLoading: isRecipeLoading } = useFetch(fetchRecipe, [id])
-
-  const fetchCategoryRecipes = useCallback(async () => {
-    if (!recipe) return []
-    const fetchedRecipes = await RecipeAPI.getRecipes({ category: recipe.strCategory })
-    return fetchedRecipes.filter((categoryRecipe: ISimpleRecipe) => categoryRecipe.idMeal !== id)
-  }, [recipe, id])
-
-  const {
-    data: categoryRecipes,
-    error: categoryError,
-    isLoading: isCategoryLoading,
-  } = useFetch(fetchCategoryRecipes, [recipe])
-
-  const loading = isRecipeLoading || isCategoryLoading
-  const error = recipeError || categoryError
+  const { recipe, categoryRecipes, isLoading, error } = useRecipeWithSimilarRecipes(id)
 
   return (
-    <LoadingErrorHandler isLoading={loading} error={error}>
+    <LoadingErrorHandler isLoading={isLoading} error={error}>
       <PageContainer>
         <div className='flex flex-col lg:flex-row gap-8 max-h-[85vh]'>
           <section className='flex-1 overflow-auto'>
             <div className='flex flex-col md:flex-row gap-6 mb-8'>
               <img
+                loading='lazy'
                 src={recipe?.strMealThumb}
                 alt={recipe?.strMeal}
                 className='w-full md:w-1/2 h-96 object-cover rounded-lg'
