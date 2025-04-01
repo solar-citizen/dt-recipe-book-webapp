@@ -4,3 +4,5 @@ import LoadingErrorHandler from './LoadingErrorHandler'
 import RecipeCard from './RecipeCard'
 
 export { FilterLink, Header, LoadingErrorHandler, RecipeCard }
+
+export * from './SpinnerIcon'
