@@ -1,11 +1,11 @@
 import { clsx } from 'clsx'
 import { JSX, ReactNode } from 'react'
 
-type HeadingLevelType = 1 | 2 | 3
+type HeadingLevel = 1 | 2 | 3
 
 type HeadingProps = {
   children: ReactNode
-  level?: HeadingLevelType
+  level?: HeadingLevel
   className?: string
 }
 

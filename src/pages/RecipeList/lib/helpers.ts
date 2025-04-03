@@ -1,4 +1,4 @@
-export type RecipeFilterKeyType = (typeof RecipeFilterTypes)[keyof typeof RecipeFilterTypes]
+export type RecipeFilterKey = (typeof RecipeFilterTypes)[keyof typeof RecipeFilterTypes]
 export type RecipeFiltersType = {
   [RecipeFilterTypes.INGREDIENT]?: string
   [RecipeFilterTypes.COUNTRY]?: string
@@ -12,7 +12,7 @@ export const RecipeFilterTypes = {
 } as const
 
 export const getPageTitle = (searchParams: URLSearchParams) => {
-  const getFilterTitle = (filterType: RecipeFilterKeyType): string | null => {
+  const getFilterTitle = (filterType: RecipeFilterKey): string | null => {
     return searchParams.get(filterType)
   }
 

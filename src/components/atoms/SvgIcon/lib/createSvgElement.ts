@@ -1,8 +1,8 @@
 import { createElement, JSX, SVGProps } from 'react'
 
-import { SvgElementPropsType } from './types'
+import { SvgElementProps } from './types'
 
-const tagMap: Record<SvgElementPropsType['type'], keyof JSX.IntrinsicElements> = {
+const tagMap: Record<SvgElementProps['type'], keyof JSX.IntrinsicElements> = {
   path: 'path',
   circle: 'circle',
   rect: 'rect',
@@ -12,11 +12,7 @@ const tagMap: Record<SvgElementPropsType['type'], keyof JSX.IntrinsicElements> =
   polyline: 'polyline',
 }
 
-export const createSvgElement = (
-  element: SvgElementPropsType,
-  index: number,
-  defaultColor?: string,
-): JSX.Element | null => {
+export const createSvgElement = (element: SvgElementProps, index: number, defaultColor?: string): JSX.Element => {
   const Tag = tagMap[element.type]
 
   const { props } = element

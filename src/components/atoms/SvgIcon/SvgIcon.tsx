@@ -1,9 +1,9 @@
 import { memo, type SVGProps } from 'react'
 
-import { createSvgElement, SvgElementPropsType } from './lib'
+import { createSvgElement, SvgElementProps } from './lib'
 
 export type SvgIconProps = SVGProps<SVGSVGElement> & {
-  elements?: SvgElementPropsType[]
+  elements?: SvgElementProps[]
   size?: string | number
   color?: string
   className?: string

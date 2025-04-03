@@ -1,6 +1,6 @@
 import { type SVGProps } from 'react'
 
-export type SvgElementPropsType =
+export type SvgElementProps =
   | { type: 'path'; props: SVGProps<SVGPathElement> }
   | { type: 'circle'; props: SVGProps<SVGCircleElement> }
   | { type: 'rect'; props: SVGProps<SVGRectElement> }

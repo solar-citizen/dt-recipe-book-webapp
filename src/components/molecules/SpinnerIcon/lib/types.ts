@@ -1,6 +1,6 @@
-import { SvgElementPropsType } from '@/src/components/atoms'
+import { SvgElementProps } from '@/src/components/atoms'
 
-export type SpinnerVariantConfigType = {
-  elements: SvgElementPropsType[]
+export type SpinnerVariantConfig = {
+  elements: SvgElementProps[]
   className?: string
 }

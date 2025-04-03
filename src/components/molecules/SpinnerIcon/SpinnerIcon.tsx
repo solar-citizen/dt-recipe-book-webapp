@@ -2,7 +2,7 @@ import { clsx } from 'clsx'
 
 import { Icon } from '@/src/components/molecules'
 
-import { SpinnerVariantConfigType, SpinnerVariants, SvgElementTypes } from './lib'
+import { SpinnerVariantConfig, SpinnerVariants, SvgElementTypes } from './lib'
 
 type SpinnerProps = {
   variant?: SpinnerVariants
@@ -13,7 +13,7 @@ type SpinnerProps = {
 
 const { circle, rect } = SvgElementTypes
 
-const spinnerOptions: Record<SpinnerVariants, SpinnerVariantConfigType> = {
+const spinnerOptions: Record<SpinnerVariants, SpinnerVariantConfig> = {
   [SpinnerVariants.Circle]: {
     elements: [
       { type: circle, props: { cx: 12, cy: 2.5, r: 1.5, opacity: 0.14 } },

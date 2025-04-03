@@ -1,2 +1,2 @@
 export { createSvgElement } from './createSvgElement'
-export { type SvgElementPropsType } from './types'
+export { type SvgElementProps } from './types'
