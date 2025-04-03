@@ -1,6 +1,10 @@
 import { ReactNode } from 'react'
 import { Link } from 'react-router-dom'
 
+import { AppRoutes } from '@/src/routes'
+
+const { recipes } = AppRoutes
+
 type FilterLinkProps = {
   filterType: 'ingredient' | 'country'
   filterValue: string
@@ -9,7 +13,7 @@ type FilterLinkProps = {
 }
 
 const FilterLink = ({ filterType, filterValue, className = '', children }: FilterLinkProps) => {
-  const to = `/recipes?${filterType}=${encodeURIComponent(filterValue)}`
+  const to = `${recipes.route}?${filterType}=${encodeURIComponent(filterValue)}`
   return (
     <Link to={to} className={className}>
       {children}

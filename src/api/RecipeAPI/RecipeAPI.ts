@@ -1,17 +1,16 @@
 import axios from 'axios'
 
-import { baseURL, IRecipe, IRecipeDetails } from '@/src/lib'
+import { IRecipe, IRecipeDetails } from '@/src/lib'
+import { AppRoutes } from '@/src/routes'
 
 import { IMealAPIResponse, IMealResponse } from './lib'
 
+const { recipes } = AppRoutes
+
 export const RecipeAPI = {
-  async getRecipes(filters?: {
-    ingredient?: string;
-    country?: string;
-    category?: string;
-  }): Promise<IRecipe[]> {
+  async getRecipes(filters?: { ingredient?: string; country?: string; category?: string }): Promise<IRecipe[]> {
     try {
-      const response = await axios.get<IMealAPIResponse>(`${baseURL}/recipes`, {
+      const response = await axios.get<IMealAPIResponse>(recipes.apiRoute, {
         params: {
           ingredient: filters?.ingredient,
           country: filters?.country,
@@ -19,13 +18,15 @@ export const RecipeAPI = {
         },
       })
 
-      return (response.data.meals || []).map((meal): IRecipe => ({
-        idMeal: meal.idMeal,
-        strMeal: meal.strMeal,
-        strMealThumb: meal.strMealThumb,
-        strCategory: meal.strCategory || '',
-        strArea: meal.strArea || '',
-      }))
+      return (response.data.meals || []).map(
+        (meal): IRecipe => ({
+          idMeal: meal.idMeal,
+          strMeal: meal.strMeal,
+          strMealThumb: meal.strMealThumb,
+          strCategory: meal.strCategory || '',
+          strArea: meal.strArea || '',
+        }),
+      )
     } catch (error) {
       console.error('Error fetching recipes:', error)
       return []
@@ -34,7 +35,7 @@ export const RecipeAPI = {
 
   async getRecipeById(id: string): Promise<IRecipeDetails | null> {
     try {
-      const response = await axios.get<IMealAPIResponse>(`${baseURL}/recipes/${id}`)
+      const response = await axios.get<IMealAPIResponse>(`${recipes.apiRoute}/${id}`)
       const meal = response.data.meals?.[0]
       if (!meal) return null
       return this.parseRecipeDetails(meal)
@@ -79,6 +80,4 @@ export const RecipeAPI = {
       ingredients,
     }
   },
-
-
 }

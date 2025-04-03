@@ -2,11 +2,17 @@ import { useCallback, useMemo } from 'react'
 import { useSearchParams } from 'react-router-dom'
 
 import { RecipeAPI } from '@/src/api'
-import { useFetch } from '@/src/lib'
+import { IRecipe, useFetch } from '@/src/lib'
 
 import { RecipeFiltersType, RecipeFilterTypes } from '../../lib'
 
-export const useFilteredRecipes = () => {
+export const useFilteredRecipes = (): {
+  recipes: IRecipe[] | null
+  error: string
+  isLoading: boolean
+  filters: RecipeFiltersType
+  searchParams: URLSearchParams
+} => {
   const [searchParams] = useSearchParams()
 
   // Extract filters from search parameters

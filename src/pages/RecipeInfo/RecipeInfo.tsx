@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom'
 
 import { Heading, PageContainer } from '@/src/components/atoms'
-import { FilterLink, LoadingErrorHandler, RecipeCard } from '@/src/components/molecules'
+import { FilterLink, LoadingErrorHandler, RecipeCard, SpinnerVariants } from '@/src/components/molecules'
 
 import { useRecipeWithSimilarRecipes } from './lib'
 
@@ -11,7 +11,7 @@ const RecipeInfo = () => {
   const { recipe, categoryRecipes, isLoading, error } = useRecipeWithSimilarRecipes(id)
 
   return (
-    <LoadingErrorHandler isLoading={isLoading} error={error}>
+    <LoadingErrorHandler isLoading={isLoading} error={error} loadingSpinnerVariant={SpinnerVariants.Bar}>
       <PageContainer>
         <div className='flex flex-col lg:flex-row gap-8 max-h-[85vh]'>
           <section className='flex-1 overflow-auto'>

@@ -2,20 +2,24 @@ import { Link } from 'react-router-dom'
 
 import { Heading } from '@/src/components/atoms'
 import { IRecipe, ISimpleRecipe } from '@/src/lib'
+import { AppRoutes } from '@/src/routes'
 
 type RecipeCardProps = {
   recipe: IRecipe | ISimpleRecipe
   variant?: 'full' | 'compact'
 }
 
+const { recipes } = AppRoutes
+
 const RecipeCard = ({ recipe, variant = 'full' }: RecipeCardProps) => {
   const isFullRecipe = 'strCategory' in recipe || 'strArea' in recipe
 
   if (variant === 'compact') {
     return (
+      //ToDo: Remove duplication
       <Link
         key={recipe.idMeal}
-        to={`/recipes/${recipe.idMeal}`}
+        to={`${recipes.route}/${recipe.idMeal}`}
         className='flex items-center bg-white p-3 rounded-lg shadow hover:shadow-md transition-shadow'
       >
         <img
@@ -30,9 +34,10 @@ const RecipeCard = ({ recipe, variant = 'full' }: RecipeCardProps) => {
   }
 
   return (
+    //ToDo: Remove duplication
     <Link
       key={recipe.idMeal}
-      to={`/recipes/${recipe.idMeal}`}
+      to={`${recipes.route}/${recipe.idMeal}`}
       className='bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow'
     >
       <img loading='lazy' src={recipe.strMealThumb} alt={recipe.strMeal} className='w-full h-48 object-cover' />
