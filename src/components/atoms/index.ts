@@ -3,4 +3,5 @@ import PageContainer from './PageContainer'
 
 export { Heading, PageContainer }
 
-export * from './Icon'
+export * from './FaIcon'
+export * from './SvgIcon'

@@ -1,6 +1,6 @@
 import { clsx } from 'clsx'
 
-import { Icon } from '@/src/components/atoms'
+import { Icon } from '@/src/components/molecules'
 
 import { SpinnerVariantConfigType, SpinnerVariants, svgElementTypes } from './lib'
 
@@ -40,6 +40,7 @@ const SpinnerIcon = ({ variant, size, color, className }: SpinnerProps) => {
 
   return (
     <Icon
+      variant='svg'
       elements={elements}
       width={size || 20}
       height={size || 20}
