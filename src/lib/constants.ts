@@ -21,3 +21,7 @@ export const ErrorMessages = {
     serverError: 'Server error occurred',
   },
 } as const
+
+export const AppRoutes = {
+  recipes: { route: '/recipes', apiRoute: `${baseURL}/recipes` },
+}

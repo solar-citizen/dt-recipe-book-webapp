@@ -1,8 +1,7 @@
 import { Link } from 'react-router-dom'
 
 import { Heading } from '@/src/components/atoms'
-import { IRecipe, ISimpleRecipe } from '@/src/lib'
-import { AppRoutes } from '@/src/routes'
+import { AppRoutes, IRecipe, ISimpleRecipe } from '@/src/lib'
 
 type RecipeCardProps = {
   recipe: IRecipe | ISimpleRecipe

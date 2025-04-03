@@ -1,8 +1,8 @@
 import { Navigate, Route, Routes } from 'react-router-dom'
 
 import { MainLayout } from '@/src/components/templates'
+import { AppRoutes } from '@/src/lib'
 import { RecipeInfo, RecipeList } from '@/src/pages'
-import { AppRoutes } from '@/src/routes'
 
 const { recipes } = AppRoutes
 

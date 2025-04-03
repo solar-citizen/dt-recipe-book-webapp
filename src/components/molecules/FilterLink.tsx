@@ -1,7 +1,7 @@
 import { ReactNode } from 'react'
 import { Link } from 'react-router-dom'
 
-import { AppRoutes } from '@/src/routes'
+import { AppRoutes } from '@/src/lib'
 
 const { recipes } = AppRoutes
 

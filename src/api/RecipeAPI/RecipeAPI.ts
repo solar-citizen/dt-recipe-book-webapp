@@ -1,7 +1,6 @@
 import axios from 'axios'
 
-import { IRecipe, IRecipeDetails } from '@/src/lib'
-import { AppRoutes } from '@/src/routes'
+import { AppRoutes, IRecipe, IRecipeDetails } from '@/src/lib'
 
 import { IMealAPIResponse, IMealResponse } from './lib'
 
