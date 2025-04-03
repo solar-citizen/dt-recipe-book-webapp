@@ -56,17 +56,22 @@ const RecipeInfo = () => {
               </Heading>
 
               <div className='grid grid-cols-2 md:grid-cols-3 gap-4'>
-                {recipe?.ingredients.map(({ ingredient, measure }) => (
-                  <FilterLink
-                    key={`${recipe.idMeal}-${ingredient}`}
-                    filterType='ingredient'
-                    filterValue={ingredient}
-                    className='bg-gray-100 p-3 rounded hover:bg-gray-200 transition-colors text-left'
-                  >
-                    <span className='font-medium'>{ingredient}</span>
-                    <span className='text-gray-600 ml-2'>{measure}</span>
-                  </FilterLink>
-                ))}
+                {recipe?.ingredients
+                  .filter(
+                    (item, index, self) =>
+                      index === self.findIndex(t => t.ingredient === item.ingredient && t.measure === item.measure),
+                  )
+                  .map(({ ingredient, measure }) => (
+                    <FilterLink
+                      key={`${recipe.idMeal}-${ingredient}-${measure}`}
+                      filterType='ingredient'
+                      filterValue={ingredient}
+                      className='bg-gray-100 p-3 rounded hover:bg-gray-200 transition-colors text-left'
+                    >
+                      <span className='font-medium'>{ingredient}</span>
+                      <span className='text-gray-600 ml-2'>{measure}</span>
+                    </FilterLink>
+                  ))}
               </div>
             </div>
           </section>
