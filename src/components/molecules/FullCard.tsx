@@ -1,39 +1,15 @@
 import { Link } from 'react-router-dom'
 
 import { Heading } from '@/src/components/atoms'
-import { AppRoutes, IRecipe, ISimpleRecipe } from '@/src/lib'
-
-type RecipeCardProps = {
-  recipe: IRecipe | ISimpleRecipe
-  variant?: 'full' | 'compact'
-}
+import { CardProps } from '@/src/components/molecules'
+import { AppRoutes } from '@/src/lib'
 
 const { recipes } = AppRoutes
 
-const RecipeCard = ({ recipe, variant = 'full' }: RecipeCardProps) => {
+const FullCard = ({ recipe }: CardProps) => {
   const isFullRecipe = 'strCategory' in recipe || 'strArea' in recipe
 
-  if (variant === 'compact') {
-    return (
-      //ToDo: Remove duplication
-      <Link
-        key={recipe.idMeal}
-        to={`${recipes.route}/${recipe.idMeal}`}
-        className='flex items-center bg-white p-3 rounded-lg shadow hover:shadow-md transition-shadow'
-      >
-        <img
-          loading='lazy'
-          src={recipe.strMealThumb}
-          alt={recipe.strMeal}
-          className='w-16 h-16 object-cover rounded mr-4'
-        />
-        <span className='font-medium'>{recipe.strMeal}</span>
-      </Link>
-    )
-  }
-
   return (
-    //ToDo: Remove duplication
     <Link
       key={recipe.idMeal}
       to={`${recipes.route}/${recipe.idMeal}`}
@@ -51,4 +27,4 @@ const RecipeCard = ({ recipe, variant = 'full' }: RecipeCardProps) => {
   )
 }
 
-export default RecipeCard
+export default FullCard
