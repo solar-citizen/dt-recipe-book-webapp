@@ -1,5 +1,5 @@
 import { Heading, PageContainer } from '@/src/components/atoms'
-import { LoadingErrorHandler, RecipeCard } from '@/src/components/molecules'
+import { BackButton, LoadingErrorHandler, RecipeCard } from '@/src/components/molecules'
 
 import { getPageTitle, useFilteredRecipes } from './lib'
 
@@ -9,6 +9,8 @@ const RecipeList = () => {
   return (
     <LoadingErrorHandler isLoading={isLoading} error={error}>
       <PageContainer>
+        <BackButton searchParams={searchParams} />
+
         <Heading level={1} className='mb-8 text-center'>
           {getPageTitle(searchParams)}
         </Heading>

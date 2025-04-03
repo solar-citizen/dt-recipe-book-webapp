@@ -6,4 +6,5 @@ import RecipeCard from './RecipeCard'
 
 export { FilterLink, Header, Icon, LoadingErrorHandler, RecipeCard }
 
+export * from './BackButton'
 export * from './SpinnerIcon'
